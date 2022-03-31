@@ -1,5 +1,5 @@
 import { Delete, Get, HttpCode, Param } from '@nestjs/common'
-import { BaseService } from './base.service'
+import { BaseService } from '../services/base.service'
 
 export class BaseController<T extends BaseService<any, any>, M> {
   private service: T
