@@ -3,7 +3,7 @@ import { CategoryService } from './category.service'
 import { Category } from './category.entity'
 import { CategoryDto } from './category.dto'
 import { UpdateResult } from 'typeorm'
-import { BaseController } from '../base/base.controller'
+import { BaseController } from '../../base/base.controller'
 
 @Controller('/category')
 export class CategoryController extends BaseController<CategoryService, Category> {
