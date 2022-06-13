@@ -1,4 +1,12 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm'
 
 @Entity()
 export class Category {
@@ -16,4 +24,8 @@ export class Category {
 
   @UpdateDateColumn()
   updateAt: Date
+
+  @ManyToMany(() => Category, (category) => category.categories)
+  @JoinTable()
+  categories: Category[]
 }
