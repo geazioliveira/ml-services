@@ -1,6 +1,7 @@
 import { Repository, UpdateResult } from 'typeorm'
 
 export class BaseService<T extends Repository<M>, M> {
+  protected relations: string[] = []
   private service: T
 
   constructor(service: T) {
@@ -8,7 +9,9 @@ export class BaseService<T extends Repository<M>, M> {
   }
 
   findAll(): Promise<M[]> {
-    return this.service.find()
+    return this.service.find({
+      relations: this.relations
+    })
   }
 
   findOne(id: number): Promise<M> {
