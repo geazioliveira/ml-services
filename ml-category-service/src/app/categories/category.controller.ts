@@ -17,6 +17,12 @@ export class CategoryController extends BaseController<CategoryService, Category
     return this.categoryService.create(category)
   }
 
+  @Post('/many/:id')
+  @HttpCode(201)
+  createMany(@Param() params, @Body() categories: CategoryDto[]): Promise<Category> {
+    return this.categoryService.createMany(params.id, categories)
+  }
+
   @Patch(':id')
   update(@Param() params, @Body(new ValidationPipe()) category: CategoryDto): Promise<UpdateResult> {
     return this.categoryService.update(params.id, category)
